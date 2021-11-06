@@ -1,6 +1,7 @@
 import {initializeApp} from "firebase/app";
 import {getMessaging, onBackgroundMessage} from "firebase/messaging/sw";
 
+console.log('[sw.js] Loaded version: ', process.env.VUE_APP_VERSION);
 
 const firebaseConfig = {
     apiKey: "AIzaSyDWDz_678IZFVAxho3Nx1dYkXnkfIWCnEU",
