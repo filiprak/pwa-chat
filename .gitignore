@@ -3,6 +3,7 @@ node_modules
 /dist
 /dist-sw
 /ssl
+.firebase
 
 # local env files
 .env.local
