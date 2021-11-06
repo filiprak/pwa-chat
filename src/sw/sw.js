@@ -17,10 +17,10 @@ const messaging = getMessaging(firebaseApp);
 onBackgroundMessage(messaging, (payload) => {
     console.log('[sw.js] Received background message ', payload);
 
-    const notificationOptions = {
-        body: payload.notification.body,
-        icon: '/firebase-logo.png',
-    };
-
-    //self.registration.showNotification('Background Message: ' + payload.notification.title, notificationOptions);
+    self.registration.showNotification(payload.data?.title || '', {
+        body: payload.data?.body,
+        icon: payload.data?.icon,
+        vibrate: payload.data && payload.data.vibrate ? JSON.parse(payload.data.vibrate) : undefined,
+        priority: payload.data.priority,
+    });
 });

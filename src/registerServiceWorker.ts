@@ -67,7 +67,15 @@ if (process.env.NODE_ENV === 'production') {
 
             onMessage(messaging, (payload) => {
                 console.log('Received front message: ', payload)
-                //new Notification(payload.notification?.title || '', {body: payload.notification?.body});
+                new Notification(payload.data?.title || '', {
+                    body: payload.data?.body,
+                    icon: payload.data?.icon,
+                    vibrate: payload.data && payload.data.vibrate ? JSON.parse(payload.data.vibrate) : undefined,
+
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    priority: payload.data?.priority,
+                });
             });
         },
         cached() {
