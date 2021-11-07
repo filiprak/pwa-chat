@@ -8,6 +8,7 @@
     "dist": "npm run build && npm run serve:prod",
     "build": "npm run build:sw && vue-cli-service build",
     "build:sw": "vue-cli-service build --target lib --name sw --dest dist-sw/ ./src/sw/sw.js && cp dist-sw/sw.umd.min.js dist-sw/sw.js",
+    "deploy": "npm run build && firebase deploy",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
